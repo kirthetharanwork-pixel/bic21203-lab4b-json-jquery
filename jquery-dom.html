@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 4b – Q3: Native JavaScript vs jQuery</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; }
+    #myElement, #myDIV { margin-bottom: 12px; }
+    .myStyle { background-color: coral; padding: 16px; }
+    #clickMessage { font-weight: bold; color: #2b4c7e; min-height: 1.2em; }
+  </style>
+</head>
+<body>
+  <h1>jQuery DOM Operations</h1>
+
+  <div id="myElement">Original Text</div>
+
+  <div id="myDIV"><p>I am a myDIV.</p></div>
+
+  <button id="myButton">Click me</button>
+  <p id="clickMessage" aria-live="polite"></p>
+
+  <!-- jQuery 4.0.0 full build (not slim) from the official CDN -->
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+  <script>
+    // Run once the DOM is ready (jQuery equivalent of DOMContentLoaded)
+    $(function () {
+      // (a) Native: document.getElementById("myElement").textContent = "Modified Text";
+      $("#myElement").text("Modified Text");
+
+      // (b) Native: document.querySelector("#myDIV").classList.add("myStyle");
+      $("#myDIV").addClass("myStyle");
+
+      // (c) Native: document.getElementById("myButton").addEventListener("click", () => alert("Button clicked!"));
+      $("#myButton").on("click", function () {
+        $("#clickMessage").text("Button clicked!"); // also shown on the page for the screenshot
+        alert("Button clicked!");
+      });
+    });
+  </script>
+</body>
+</html>
